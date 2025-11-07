@@ -116,61 +116,15 @@ a {
   /* Added padding-bottom to prevent the underline from overlapping text */
   padding-bottom: 5px; 
   display: block;
+  /* NEW: Add transition for smooth color change on click/focus */
+  transition: color 0.1s ease-in-out; 
 }
 
-.hero-banner {
-  position: relative;
-  height: 90vh;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-      url("https://preview.colorlib.com/theme/cakeshop/assets/img/hero/h1_hero1.jpg.webp")
-      center/cover no-repeat;
-      /* height: 500px; */
-}
-.hero-inner {
-  max-width: 1200px;
-  margin: 0;
-  padding-left: 80px;
-}
-.hero-text h1 {
-  font-family: Raleway, system-ui;
-  font-size: 4rem;
-  line-height: 1.1;
-  font-weight: 300;
-  margin-bottom: 30px;
-  margin-left: 100px;
-}
-.btn-hero {
-  background: #f2c15b;
-  color: #000;
-  padding: 16px 36px;
-  border: 0;
-  border-radius: 2px;
-  font-weight: 600;
-    margin-left: 100px;
-
-}
-
-/* about section */
-.about-section {
-  background: #0e0e0e;
-  color: #fff;
-  padding: 80px 0;
-}
-.about-title {
-  text-align: center;
-  margin: 60px auto 40px;
-}
-.about-title h2 {
-  font-family: Raleway;
-  font-weight: 300;
-  font-size: 3rem;
-  line-height: 1.3;
-}
-.main-nav a:hover {
-  color: #f2c15b;
+/* UPDATED: Add style for hover, keyboard focus, and mouse click (active) state */
+.main-menu a:hover,
+.main-menu a:focus, 
+.main-menu a:active { 
+  color: #f2c15b; 
 }
 
 
@@ -185,7 +139,8 @@ a {
   transition: width .2s;
 }
 
-.main-nav a:hover::after {
+.main-nav a:hover::after,
+.main-nav a:focus::after { /* Also apply underline on keyboard focus */
   width: 100%;
 }
 .title-divider {
