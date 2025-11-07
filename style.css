@@ -9,8 +9,9 @@ html, body {
   width: 100%;
 }
 
-/* 1. Define the approximate height of the fixed header */
+/* --- NEW: FIXED NAVBAR & JUMP-FIX CORRECTION --- */
 :root {
+  /* 1. Define the approximate height of the fixed header (Adjust this value if your header is taller/shorter) */
   --header-height: 180px; 
   --ink: #0e0e0e;
   --card: #141414;
@@ -24,14 +25,16 @@ html, body {
     Arial, sans-serif;
 }
 
-/* 2. Apply padding-top to the body to reserve space */
+/* 2. Apply padding-top to the body to reserve space for the fixed header */
 body {
   font-family: Poppins, system-ui, Arial;
   color: #fff;
   background: #0e0e0e;
-  /* FIX: Add padding-top equal to the header height to prevent content jump */
   padding-top: var(--header-height); 
 }
+/* --- END FIXED NAVBAR CORRECTION --- */
+
+
 a {
   text-decoration: none;
 }
@@ -41,21 +44,17 @@ a {
   padding: 0 18px;
 }
 
-/* --- FIXED NAVBAR CHANGES (STEP 3: make it fixed) --- */
+/* 3. Make the entire header fixed */
 .site-header.dark {
   background: #0e0e0e;
   color: #fff;
-  /* The position fixed property is applied here */
   position: fixed; 
   top: 0;
   width: 100%;
   z-index: 100; 
-  /* This ensures the entire header structure takes up the defined height */
   height: var(--header-height); 
-  /* We use the full height to prevent content from peeking through */
   display: block; 
 }
-/* --- END FIXED NAVBAR CHANGES --- */
 
 
 .header-top {
@@ -1263,6 +1262,46 @@ a {
 }
 
 
+/* --- NEW: Hamburger Icon Styles --- */
+.menu-toggle {
+  display: none; 
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute; 
+  top: 75px; /* Positioned between header-top and main-nav */
+  right: 20px; 
+  z-index: 1000;
+}
+
+.hamburger-icon,
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: '';
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #fff; 
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger-icon::before {
+  transform: translateY(-8px);
+}
+
+.hamburger-icon::after {
+  transform: translateY(5px);
+}
+/* --- END Hamburger Icon Styles --- */
+
+/* --- NEW: Blog Page Opacity --- */
+.blog-page {
+  opacity: 0.7; 
+}
+/* --- END Blog Page Opacity --- */
+
+
 @media (max-width: 1024px) {
   .cs-grid {
     grid-template-columns: 1fr 1fr;
@@ -1272,7 +1311,12 @@ a {
     grid-column: 1/-1;
   }
 }
-@media (max-width: 720px) {
+@media (max-width: 768px) {
+  /* Show hamburger icon on mobile */
+  .menu-toggle {
+    display: block; 
+  }
+  
   .cs-toprow {
     flex-direction: column;
     gap: 18px;
@@ -1291,36 +1335,17 @@ a {
   .cs-brand {
     height: 56px;
   }
-}
 
-
-@media (max-width: 992px) {
-  .insta-grid {
+  .blog-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-
-@media (max-width: 600px) {
-  .insta-grid {
-    grid-template-columns: 1fr;
+  .teaser-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-}
-
-
-@media (max-width: 992px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr 1fr;
+  .blog-hero .hero-script {
+    font-size: 48px;
   }
-}
 
-@media (max-width: 600px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-@media (max-width: 768px) {
   .video-section {
     padding: 0 16px;
   }
@@ -1337,6 +1362,57 @@ a {
   .play-overlay span {
     font-size: 28px;
   }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  .hero-banner {
+    height: 70vh;
+  }
+  .hero-inner {
+    padding-left: 24px;
+  }
+
+  .about-hero {
+    height: 280px;
+  }
+  .about-hero h1 {
+    font-size: 40px;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+  .contact-hero h1 {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 720px) {
+  .cs-toprow {
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .insta-grid {
+    grid-template-columns: 1fr;
+  }
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-grid,
+  .teaser-grid {
+    grid-template-columns: 1fr;
+  }
+  .blog-hero {
+    padding: 56px 0 44px;
+  }
 }
 
 
@@ -1352,15 +1428,7 @@ a {
   .products .imgwrap img {
     height: 300px;
   }
-}
 
-
-@media (max-width: 1100px) {
-  .imgwrap img {
-    height: 360px;
-  }
-}
-@media (max-width: 900px) {
   .about-title h2 {
     font-size: 2.2rem;
   }
@@ -1375,16 +1443,5 @@ a {
   }
   .imgwrap img {
     height: 300px;
-  }
-}
-@media (max-width: 768px) {
-  .hero-text h1 {
-    font-size: 2.5rem;
-  }
-  .hero-banner {
-    height: 70vh;
-  }
-  .hero-inner {
-    padding-left: 24px;
   }
 }
