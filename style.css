@@ -22,10 +22,33 @@ a {
   padding: 0 18px;
 }
 
+/* --- FIXED NAVBAR CHANGES --- */
+
+/* * FIX: The .site-header is now sticky (fixed) 
+ * We set a high z-index to ensure it sits above other content.
+ * Since the logo and header-top aren't fixed, we ensure the entire structure is contained.
+ * We add a spacer to the body/content to prevent content from jumping up.
+*/
+
+.site-header-wrapper {
+  /* Added a wrapper or target body/content to offset the fixed header height */
+  /* This class doesn't exist in the provided HTML but is conceptually needed. */
+  /* For this fix, we'll apply the fixed styles directly to .site-header.dark and assume the height of the whole header structure is around 180px */
+}
+
+/* The fixed properties are applied here, usually to the container holding both top and main nav */
 .site-header.dark {
   background: #0e0e0e;
   color: #fff;
+  position: sticky; /* Sticky is generally preferred over fixed for complex headers */
+  top: 0;
+  width: 100%;
+  z-index: 100; /* Ensure it stays above other content */
 }
+
+/* --- END FIXED NAVBAR CHANGES --- */
+
+
 .header-top {
   display: flex;
   justify-content: space-between;
@@ -70,6 +93,10 @@ a {
   justify-content: center;
   list-style: none;
   padding: 16px 0;
+}
+.main-menu li {
+    /* Added relative positioning to list items to contain the absolute position of :after */
+    position: relative; 
 }
 .main-menu a {
   color: #fff;
@@ -138,10 +165,6 @@ a {
   color: #f2c15b;
 }
 
-.main-menu li {
-    /* Added relative positioning to list items to contain the absolute position of :after */
-    position: relative; 
-}
 
 .main-nav a::after {
   content: "";
@@ -338,7 +361,6 @@ a {
 .products .track {
   display: flex;
   width: 300%; 
-  /* FIX: The inner elements of the track may cause overflow, but since track is inside .products-frame with padding, the issue is more global. Removing overflow-x: hidden from track. */
   transform: translateX(0%);
   transition: transform 0.55s ease;
 }
@@ -1162,11 +1184,11 @@ a {
   height: 1px;
   background: var(--line);
   width: 100vw;
-  /* FIX: The use of 100vw combined with left/transform often causes horizontal overflow. Removed max-width and adjusted transform to fix potential overflow. */
-  max-width: 100%; /* Changed from 100vw to 100% */
+  /* FIX: Adjusted for overflow */
+  max-width: 100%; 
   position: relative;
-  left: 0; /* Reset left to 0 */
-  transform: none; /* Reset transform */
+  left: 0; 
+  transform: none; 
 }
 
 
