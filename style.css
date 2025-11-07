@@ -1225,7 +1225,7 @@ a {
   cursor: pointer;
   padding: 10px;
   position: absolute; 
-  top: 75px; /* Positioned between header-top and main-nav */
+  top: 75px; 
   right: 20px; 
   z-index: 1000;
 }
@@ -1266,31 +1266,84 @@ a {
     grid-column: 1/-1;
   }
 }
+/* --- UPDATED: MOBILE RESPONSIVENESS (Max-width: 768px) --- */
 @media (max-width: 768px) {
-  /* Show hamburger icon on mobile */
+  /* SHOW/HIDE BUTTON */
   .menu-toggle {
-    display: block; 
-  }
-  
-  .cs-toprow {
-    flex-direction: column;
-    gap: 18px;
-    align-items: flex-start;
-  }
-  .cs-nav {
-    gap: 22px;
-    flex-wrap: wrap;
-  }
-  .cs-grid {
-    grid-template-columns: 1fr;
-  }
-  .cs-socials {
-    flex-direction: column;
-  }
-  .cs-brand {
-    height: 56px;
+    display: block; /* Show hamburger icon on mobile */
+    position: static; /* Position statically within the flex container */
+    margin-right: 10px;
   }
 
+  /* HIDE TOP ROW (SOCIALS/CALL US) */
+  .header-top {
+    display: none; /* Hide social icons and "Call Us" on small screens */
+  }
+  
+  /* POSITION HEADER ELEMENTS FOR MOBILE */
+  .site-header.dark {
+    /* Use flexbox on the header to align logo and button on one line */
+    display: flex;
+    flex-wrap: wrap; /* Allow elements to wrap if needed */
+    align-items: center;
+    justify-content: space-between;
+    height: 100px; /* Reduced fixed header height for mobile */
+  }
+
+  /* Redefine the header height variable for mobile */
+  :root {
+    --header-height: 100px; 
+  }
+
+  /* Adjust padding based on new header height */
+  body {
+    padding-top: var(--header-height);
+  }
+
+  .logo-row {
+    padding-left: 18px; /* Give the logo some left padding */
+    padding-bottom: 0;
+  }
+  .logo-script {
+      font-size: 42px; /* Smaller logo font for mobile */
+  }
+
+  /* HIDE NAVIGATION MENU BY DEFAULT */
+  .main-nav {
+    /* Menu will stretch across the whole width below the logo/button */
+    width: 100%; 
+    max-height: 0; /* Initially hide the menu content (CSS transition hook) */
+    overflow: hidden; /* Hide anything that overflows */
+    transition: max-height 0.4s ease-in-out, border-color 0.4s ease-in-out; 
+    border-top: none; /* Remove border when menu is collapsed */
+    border-bottom: none;
+    order: 3; /* Force the navigation to appear below the logo/button */
+  }
+
+  /* STYLES WHEN MENU IS OPEN (Toggled by JS) */
+  .main-nav.open {
+    max-height: 300px; /* Arbitrary height large enough to fit all links */
+    border-top: 1px solid #ffffff14;
+    border-bottom: 1px solid #ffffff14;
+  }
+
+  /* MAKE MENU ITEMS VERTICAL */
+  .main-menu {
+    flex-direction: column; /* Stack links vertically */
+    align-items: center; /* Center links in the menu */
+    padding: 10px 0; /* Add vertical padding */
+    gap: 0; /* Remove horizontal gap */
+  }
+
+  .main-menu li {
+    width: 100%;
+    text-align: center;
+  }
+  .main-menu a {
+    padding: 10px 0; /* Add vertical spacing to links */
+  }
+  
+  /* Reset previous media query styles */
   .blog-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1342,6 +1395,7 @@ a {
     font-size: 48px;
   }
 }
+/* --- END UPDATED: MOBILE RESPONSIVENESS (Max-width: 768px) --- */
 
 @media (max-width: 720px) {
   .cs-toprow {
