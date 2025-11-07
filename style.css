@@ -7,15 +7,13 @@
 html, body {
   overflow-x: hidden;
   width: 100%;
-  position: relative; /* Added this */
 }
 
 body {
   font-family: Poppins, system-ui, Arial;
   color: #fff;
   background: #0e0e0e;
-  width: 100%; /* Ensure body doesn't exceed viewport */
-  max-width: 100%; /* Prevent horizontal overflow */
+  overflow-x: hidden; /* Added */
 }
 
 a {
@@ -26,14 +24,11 @@ a {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 18px;
-  width: 100%; /* Ensure container respects max-width */
 }
 
 .site-header.dark {
   background: #0e0e0e;
   color: #fff;
-  width: 100%;
-  max-width: 100%;
 }
 
 .header-top {
@@ -41,7 +36,6 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 18px 0;
-  max-width: 100%;
 }
 
 .social {
@@ -69,7 +63,6 @@ a {
   display: flex;
   justify-content: center;
   padding: 12px 0 6px;
-  width: 100%;
 }
 
 .logo-script {
@@ -81,8 +74,6 @@ a {
 .main-nav {
   border-top: 1px solid #ffffff14;
   border-bottom: 1px solid #ffffff14;
-  width: 100%;
-  max-width: 100%;
 }
 
 .main-menu {
@@ -91,8 +82,6 @@ a {
   justify-content: center;
   list-style: none;
   padding: 16px 0;
-  flex-wrap: wrap; /* Added for mobile */
-  max-width: 100%;
 }
 
 .main-menu a {
@@ -100,7 +89,6 @@ a {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.06em;
-  position: relative; /* For the hover effect */
 }
 
 .hero-banner {
@@ -112,16 +100,13 @@ a {
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
     url("https://preview.colorlib.com/theme/cakeshop/assets/img/hero/h1_hero1.jpg.webp")
     center/cover no-repeat;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden; /* Prevent any child overflow */
+  overflow: hidden; /* Added */
 }
 
 .hero-inner {
   max-width: 1200px;
   margin: 0;
   padding-left: 80px;
-  width: 100%;
 }
 
 .hero-text h1 {
@@ -131,8 +116,6 @@ a {
   font-weight: 300;
   margin-bottom: 30px;
   margin-left: 100px;
-  max-width: 100%; /* Prevent text overflow */
-  word-wrap: break-word; /* Handle long words */
 }
 
 .btn-hero {
@@ -149,14 +132,11 @@ a {
   background: #0e0e0e;
   color: #fff;
   padding: 80px 0;
-  width: 100%;
-  max-width: 100%;
 }
 
 .about-title {
   text-align: center;
   margin: 60px auto 40px;
-  max-width: 100%;
 }
 
 .about-title h2 {
@@ -164,8 +144,6 @@ a {
   font-weight: 300;
   font-size: 3rem;
   line-height: 1.3;
-  max-width: 100%;
-  word-wrap: break-word;
 }
 
 .main-nav a:hover {
@@ -200,13 +178,11 @@ a {
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 100%;
 }
 
 .about-text {
   flex: 1;
   min-width: 320px;
-  max-width: 100%;
 }
 
 .about-text h3 {
@@ -215,16 +191,12 @@ a {
   font-weight: 300;
   font-size: 1.8rem;
   margin-bottom: 18px;
-  max-width: 100%;
-  word-wrap: break-word;
 }
 
 .about-text p {
   color: #d9d9d9;
   margin-bottom: 18px;
   line-height: 1.8;
-  max-width: 100%;
-  word-wrap: break-word;
 }
 
 .about-img {
@@ -233,7 +205,6 @@ a {
   background: #111;
   padding: 16px;
   border-radius: 6px;
-  max-width: 100%;
 }
 
 .about-img img {
@@ -241,7 +212,6 @@ a {
   display: block;
   border-radius: 4px;
   box-shadow: 0 0 20px #00000066;
-  max-width: 100%; /* Ensure image doesn't overflow */
 }
 
 :root {
@@ -254,9 +224,6 @@ a {
 .products {
   padding: 70px 0 90px;
   background: #0b0b0b;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden; /* Prevent carousel overflow */
 }
 
 .products .section-title {
@@ -265,14 +232,12 @@ a {
   font-weight: 300;
   letter-spacing: 0.5px;
   margin-bottom: 34px;
-  max-width: 100%;
 }
 
 .prod-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 22px;
-  max-width: 100%;
 }
 
 .p-card {
@@ -281,7 +246,6 @@ a {
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
-  max-width: 100%;
 }
 
 .p-card:hover {
@@ -294,7 +258,6 @@ a {
   aspect-ratio: 4/3;
   overflow: hidden;
   display: block;
-  max-width: 100%;
 }
 
 .p-media img {
@@ -304,7 +267,6 @@ a {
   transform: scale(1.02);
   transition: transform 0.45s ease, filter 0.45s ease;
   display: block;
-  max-width: 100%; /* Prevent image overflow */
 }
 
 .p-card:hover .p-media img {
@@ -326,7 +288,6 @@ a {
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  white-space: nowrap; /* Prevent button text wrapping */
 }
 
 .p-card:hover .add {
@@ -340,15 +301,12 @@ a {
   font-size: 1.05rem;
   letter-spacing: 0.2px;
   margin: 14px 14px 6px;
-  max-width: 100%;
-  word-wrap: break-word;
 }
 
 .p-card .price {
   color: var(--muted);
   font-weight: 600;
   margin: 0 14px 16px;
-  max-width: 100%;
 }
 
 @media (max-width: 1100px) {
@@ -370,15 +328,13 @@ a {
   .p-media .add {
     opacity: 1;
     transform: translate(-50%, 0);
-  }
+  } 
 }
 
 .products {
   background: #0e0e0e;
   padding: 50px 0 90px;
   position: relative;
-  width: 100%;
-  max-width: 100%;
 }
 
 .products .products-frame {
@@ -386,14 +342,11 @@ a {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 18px;
-  width: 100%;
-  overflow: hidden; /* Contain carousel */
 }
 
 .products .viewport {
   overflow: hidden;
   width: 100%;
-  max-width: 100%;
 }
 
 .products .track {
@@ -402,7 +355,6 @@ a {
   overflow-x: hidden;
   transform: translateX(0%);
   transition: transform 0.55s ease;
-  max-width: 100%;
 }
 
 .products .group {
@@ -411,7 +363,6 @@ a {
   grid-template-columns: repeat(3, 1fr);
   gap: 36px;
   padding: 0;
-  max-width: 100%;
 }
 
 .cakes-banner {
@@ -423,9 +374,7 @@ a {
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
     url("https://preview.colorlib.com/theme/cakeshop/assets/img/hero/h1_hero1.jpg.webp")
     center/cover no-repeat;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
+  overflow: hidden; /* Added */
 }
 
 .cakes-banner .about h1 {
@@ -436,7 +385,6 @@ a {
   max-width: 1200px;
   margin: 0;
   padding-left: 80px;
-  width: 100%;
 }
 
 .cakes-text h1 {
@@ -445,72 +393,40 @@ a {
   line-height: 1.1;
   font-weight: 300;
   margin-bottom: 30px;
-  max-width: 100%;
-  word-wrap: break-word;
 }
 
 img {
   max-width: 100%;
   height: auto;
-  display: block; /* Remove extra space below images */
 }
 
 .cs-rule {
   width: 100%;
   margin: 0 auto;
   transform: none;
-  max-width: 100%;
 }
 
-/* Additional responsive fixes */
 @media (max-width: 768px) {
   .hero-text h1 {
     font-size: 2.5rem;
-    margin-left: 0; /* Remove excessive left margin on mobile */
+    margin-left: 0; /* Fixed */
   }
-  
   .hero-banner {
     height: 70vh;
   }
-  
   .hero-inner,
   .cakes-inner,
   .about-inner {
     padding-left: 20px;
     padding-right: 20px;
   }
-  
   .btn-hero {
-    margin-left: 0; /* Remove excessive left margin on mobile */
+    margin-left: 0; /* Fixed */
   }
-  
-  .cakes-text h1,
+  .cakes-text h1 {
+    margin-left: 0; /* Fixed */
+  }
   .cakes-banner .about h1 {
-    margin-left: 0; /* Remove excessive left margin on mobile */
-  }
-  
-  .main-menu {
-    gap: 20px; /* Reduce gap on mobile */
-    padding: 12px 0;
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 480px) {
-  .hero-text h1 {
-    font-size: 2rem;
-  }
-  
-  .about-title h2 {
-    font-size: 2rem;
-  }
-  
-  .logo-script {
-    font-size: 42px;
-  }
-  
-  .main-menu {
-    gap: 12px;
-    font-size: 0.9rem;
+    margin-left: 0; /* Fixed */
   }
 }
