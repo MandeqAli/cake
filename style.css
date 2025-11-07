@@ -82,6 +82,7 @@ a {
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
       url("https://preview.colorlib.com/theme/cakeshop/assets/img/hero/h1_hero1.jpg.webp")
       center/cover no-repeat;
+      /* height: 500px; */
 }
 .hero-inner {
   max-width: 1200px;
@@ -94,6 +95,7 @@ a {
   line-height: 1.1;
   font-weight: 300;
   margin-bottom: 30px;
+  margin-left: 100px;
 }
 .btn-hero {
   background: #f2c15b;
@@ -102,8 +104,11 @@ a {
   border: 0;
   border-radius: 2px;
   font-weight: 600;
+    margin-left: 100px;
+
 }
 
+/* about section */
 .about-section {
   background: #0e0e0e;
   color: #fff;
@@ -285,6 +290,11 @@ a {
   .prod-grid {
     grid-template-columns: 1fr;
   }
+  /* .main-nav{
+    position: fixed;
+    margin-top: -10px;
+
+  } */
   .p-media .add {
     opacity: 1;
     transform: translate(-50%, 0);
@@ -332,8 +342,13 @@ a {
   align-items: center;
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
     url("https://preview.colorlib.com/theme/cakeshop/assets/img/hero/h1_hero1.jpg.webp")
-      center/cover no-repeat;
+      center/cover no-repeat ;
+      height: 250px;
 }
+.cakes-banner .about h1{
+  margin-left: 110px;
+}
+
 .cakes-inner {
   max-width: 1200px;
   margin: 0;
@@ -345,6 +360,7 @@ a {
   line-height: 1.1;
   font-weight: 300;
   margin-bottom: 30px;
+  /* margin-left: 100px; */
 }
 
 
@@ -741,7 +757,14 @@ a {
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
       url("https://preview.colorlib.com/theme/cakeshop/assets/img/hero/h1_hero1.jpg.webp")
       center/cover no-repeat; 
+      height: 240px;
 }
+
+.about-inner .about  h1{
+  margin-left: 110px;
+}
+
+
 .about-inner {
   max-width: 1200px;
   margin: 0;
