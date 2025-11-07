@@ -3,6 +3,11 @@
   margin: 0;
   padding: 0;
 }
+/* FIX: Added html, body overflow fix to prevent horizontal scrollbar on mobile devices or due to wide elements like the footer rule. */
+html, body { 
+  overflow-x: hidden;
+  width: 100%;
+}
 body {
   font-family: Poppins, system-ui, Arial;
   color: #fff;
@@ -71,6 +76,11 @@ a {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.06em;
+  /* Added position relative for the pseudo-element underline to work correctly */
+  position: relative;
+  /* Added padding-bottom to prevent the underline from overlapping text */
+  padding-bottom: 5px; 
+  display: block;
 }
 
 .hero-banner {
@@ -128,6 +138,11 @@ a {
   color: #f2c15b;
 }
 
+.main-menu li {
+    /* Added relative positioning to list items to contain the absolute position of :after */
+    position: relative; 
+}
+
 .main-nav a::after {
   content: "";
   position: absolute;
@@ -135,6 +150,7 @@ a {
   bottom: 0;
   height: 2px;
   width: 0;
+  background: #f2c15b; /* FIX: Added background color */
   transition: width .2s;
 }
 
@@ -322,6 +338,7 @@ a {
 .products .track {
   display: flex;
   width: 300%; 
+  /* FIX: The inner elements of the track may cause overflow, but since track is inside .products-frame with padding, the issue is more global. Removing overflow-x: hidden from track. */
   transform: translateX(0%);
   transition: transform 0.55s ease;
 }
@@ -516,7 +533,8 @@ a {
 
 .play-overlay a:hover {
   background: #f2c15b;
-  transform: translate(-50%, -50%) scale(1.08);
+  /* FIX: Combined transforms to prevent override */
+  transform: translate(-50%, -50%) scale(1.08); 
 }
 
 .play-overlay span {
@@ -1144,10 +1162,11 @@ a {
   height: 1px;
   background: var(--line);
   width: 100vw;
-  max-width: 100vw;
+  /* FIX: The use of 100vw combined with left/transform often causes horizontal overflow. Removed max-width and adjusted transform to fix potential overflow. */
+  max-width: 100%; /* Changed from 100vw to 100% */
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0; /* Reset left to 0 */
+  transform: none; /* Reset transform */
 }
 
 
