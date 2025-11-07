@@ -3,15 +3,14 @@
   margin: 0;
   padding: 0;
 }
-/* FIX: Added html, body overflow fix to prevent horizontal scrollbar on mobile devices or due to wide elements like the footer rule. */
+
 html, body { 
   overflow-x: hidden;
   width: 100%;
 }
 
-/* --- NEW: FIXED NAVBAR & JUMP-FIX CORRECTION --- */
 :root {
-  /* 1. Define the approximate height of the fixed header (Adjust this value if your header is taller/shorter) */
+  
   --header-height: 180px; 
   --ink: #0e0e0e;
   --card: #141414;
@@ -25,14 +24,14 @@ html, body {
     Arial, sans-serif;
 }
 
-/* 2. Apply padding-top to the body to reserve space for the fixed header */
+
 body {
   font-family: Poppins, system-ui, Arial;
   color: #fff;
   background: #0e0e0e;
   padding-top: var(--header-height); 
 }
-/* --- END FIXED NAVBAR CORRECTION --- */
+
 
 
 a {
@@ -44,7 +43,7 @@ a {
   padding: 0 18px;
 }
 
-/* 3. Make the entire header fixed */
+
 .site-header.dark {
   background: #0e0e0e;
   color: #fff;
@@ -103,7 +102,6 @@ a {
   padding: 16px 0;
 }
 .main-menu li {
-    /* Added relative positioning to list items to contain the absolute position of :after */
     position: relative; 
 }
 .main-menu a {
@@ -111,16 +109,13 @@ a {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.06em;
-  /* Added position relative for the pseudo-element underline to work correctly */
   position: relative;
-  /* Added padding-bottom to prevent the underline from overlapping text */
   padding-bottom: 5px; 
   display: block;
-  /* NEW: Add transition for smooth color change on click/focus */
   transition: color 0.1s ease-in-out; 
 }
 
-/* UPDATED: Add style for hover, keyboard focus, and mouse click (active) state */
+
 .main-menu a:hover,
 .main-menu a:focus, 
 .main-menu a:active { 
@@ -135,12 +130,12 @@ a {
   bottom: 0;
   height: 2px;
   width: 0;
-  background: #f2c15b; /* FIX: Added background color */
+  background: #f2c15b; 
   transition: width .2s;
 }
 
 .main-nav a:hover::after,
-.main-nav a:focus::after { /* Also apply underline on keyboard focus */
+.main-nav a:focus::after {
   width: 100%;
 }
 .title-divider {
@@ -286,11 +281,7 @@ a {
   .prod-grid {
     grid-template-columns: 1fr;
   }
-  /* .main-nav{
-    position: fixed;
-    margin-top: -10px;
 
-  } */
   .p-media .add {
     opacity: 1;
     transform: translate(-50%, 0);
@@ -356,7 +347,7 @@ a {
   line-height: 1.1;
   font-weight: 300;
   margin-bottom: 30px;
-  /* margin-left: 100px; */
+
 }
 
 
@@ -511,8 +502,6 @@ a {
 }
 
 .play-overlay a:hover {
-  background: #f2c15b;
-  /* FIX: Combined transforms to prevent override */
   transform: translate(-50%, -50%) scale(1.08); 
 }
 
@@ -1111,7 +1100,6 @@ a {
   height: 1px;
   background: var(--line);
   width: 100vw;
-  /* FIX: Adjusted for overflow */
   max-width: 100%; 
   position: relative;
   left: 0; 
@@ -1218,7 +1206,7 @@ a {
 
 
 /* --- NEW: Hamburger Icon Styles --- */
-.menu-toggle {
+/* .menu-toggle {
   display: none; 
   background: none;
   border: none;
@@ -1247,14 +1235,14 @@ a {
 
 .hamburger-icon::after {
   transform: translateY(5px);
-}
-/* --- END Hamburger Icon Styles --- */
+} */
 
-/* --- NEW: Blog Page Opacity --- */
+
+
 .blog-page {
-  opacity: 0.7; 
+  opacity: 0.9; 
 }
-/* --- END Blog Page Opacity --- */
+
 
 
 @media (max-width: 1024px) {
@@ -1266,73 +1254,71 @@ a {
     grid-column: 1/-1;
   }
 }
-/* --- UPDATED: MOBILE RESPONSIVENESS (Max-width: 768px) --- */
+
 @media (max-width: 768px) {
-  /* SHOW/HIDE BUTTON */
+  
   .menu-toggle {
-    display: block; /* Show hamburger icon on mobile */
-    position: static; /* Position statically within the flex container */
+    display: block; 
+    position: static;
     margin-right: 10px;
   }
 
-  /* HIDE TOP ROW (SOCIALS/CALL US) */
+ 
   .header-top {
-    display: none; /* Hide social icons and "Call Us" on small screens */
+    display: none; 
   }
   
-  /* POSITION HEADER ELEMENTS FOR MOBILE */
+
   .site-header.dark {
-    /* Use flexbox on the header to align logo and button on one line */
+ 
     display: flex;
-    flex-wrap: wrap; /* Allow elements to wrap if needed */
+    flex-wrap: wrap; 
     align-items: center;
     justify-content: space-between;
-    height: 100px; /* Reduced fixed header height for mobile */
+    height: 100px; 
   }
 
-  /* Redefine the header height variable for mobile */
+
   :root {
     --header-height: 100px; 
   }
 
-  /* Adjust padding based on new header height */
+
   body {
     padding-top: var(--header-height);
   }
 
   .logo-row {
-    padding-left: 18px; /* Give the logo some left padding */
+    padding-left: 18px; 
     padding-bottom: 0;
   }
   .logo-script {
-      font-size: 42px; /* Smaller logo font for mobile */
+      font-size: 42px; 
   }
 
-  /* HIDE NAVIGATION MENU BY DEFAULT */
   .main-nav {
-    /* Menu will stretch across the whole width below the logo/button */
     width: 100%; 
-    max-height: 0; /* Initially hide the menu content (CSS transition hook) */
-    overflow: hidden; /* Hide anything that overflows */
+    max-height: 0;
+    overflow: hidden; 
     transition: max-height 0.4s ease-in-out, border-color 0.4s ease-in-out; 
-    border-top: none; /* Remove border when menu is collapsed */
+    border-top: none; 
     border-bottom: none;
-    order: 3; /* Force the navigation to appear below the logo/button */
+    order: 3; 
   }
 
-  /* STYLES WHEN MENU IS OPEN (Toggled by JS) */
+ 
   .main-nav.open {
-    max-height: 300px; /* Arbitrary height large enough to fit all links */
+    max-height: 300px; 
     border-top: 1px solid #ffffff14;
     border-bottom: 1px solid #ffffff14;
   }
 
-  /* MAKE MENU ITEMS VERTICAL */
+ 
   .main-menu {
-    flex-direction: column; /* Stack links vertically */
-    align-items: center; /* Center links in the menu */
-    padding: 10px 0; /* Add vertical padding */
-    gap: 0; /* Remove horizontal gap */
+    flex-direction: column; 
+    align-items: center;
+    padding: 10px 0; 
+    gap: 0;
   }
 
   .main-menu li {
@@ -1340,10 +1326,10 @@ a {
     text-align: center;
   }
   .main-menu a {
-    padding: 10px 0; /* Add vertical spacing to links */
+    padding: 10px 0; 
   }
   
-  /* Reset previous media query styles */
+ 
   .blog-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1395,7 +1381,7 @@ a {
     font-size: 48px;
   }
 }
-/* --- END UPDATED: MOBILE RESPONSIVENESS (Max-width: 768px) --- */
+
 
 @media (max-width: 720px) {
   .cs-toprow {
