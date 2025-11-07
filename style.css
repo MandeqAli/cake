@@ -80,7 +80,7 @@ a {
   display: flex;
   align-items: center;
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-       url("https://preview.colorlib.com/theme/cakeshop/assets/img/hero/h1_hero1.jpg.webp")
+url("https://preview.colorlib.com/theme/cakeshop/assets/img/hero/h1_hero1.jpg.webp")
       center/cover no-repeat;
 }
 .hero-inner {
@@ -741,7 +741,6 @@ a {
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
       url("https://preview.colorlib.com/theme/cakeshop/assets/img/hero/h1_hero1.jpg.webp")
       center/cover no-repeat; 
-      /* about */
 }
 .about-inner {
   max-width: 1200px;
