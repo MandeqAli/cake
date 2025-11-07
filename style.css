@@ -8,10 +8,29 @@ html, body {
   overflow-x: hidden;
   width: 100%;
 }
+
+/* 1. Define the approximate height of the fixed header */
+:root {
+  --header-height: 180px; 
+  --ink: #0e0e0e;
+  --card: #141414;
+  --muted: #cfcfcf;
+  --gold: #d4af37;
+  --text: #ffffff;
+  --line: #1a1a1a;
+  --box: #121212;
+  --boxBorder: #262626;
+  --font: "Raleway", system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+/* 2. Apply padding-top to the body to reserve space */
 body {
   font-family: Poppins, system-ui, Arial;
   color: #fff;
   background: #0e0e0e;
+  /* FIX: Add padding-top equal to the header height to prevent content jump */
+  padding-top: var(--header-height); 
 }
 a {
   text-decoration: none;
@@ -22,30 +41,20 @@ a {
   padding: 0 18px;
 }
 
-/* --- FIXED NAVBAR CHANGES --- */
-
-/* * FIX: The .site-header is now sticky (fixed) 
- * We set a high z-index to ensure it sits above other content.
- * Since the logo and header-top aren't fixed, we ensure the entire structure is contained.
- * We add a spacer to the body/content to prevent content from jumping up.
-*/
-
-.site-header-wrapper {
-  /* Added a wrapper or target body/content to offset the fixed header height */
-  /* This class doesn't exist in the provided HTML but is conceptually needed. */
-  /* For this fix, we'll apply the fixed styles directly to .site-header.dark and assume the height of the whole header structure is around 180px */
-}
-
-/* The fixed properties are applied here, usually to the container holding both top and main nav */
+/* --- FIXED NAVBAR CHANGES (STEP 3: make it fixed) --- */
 .site-header.dark {
   background: #0e0e0e;
   color: #fff;
-  position: sticky; /* Sticky is generally preferred over fixed for complex headers */
+  /* The position fixed property is applied here */
+  position: fixed; 
   top: 0;
   width: 100%;
-  z-index: 100; /* Ensure it stays above other content */
+  z-index: 100; 
+  /* This ensures the entire header structure takes up the defined height */
+  height: var(--header-height); 
+  /* We use the full height to prevent content from peeking through */
+  display: block; 
 }
-
 /* --- END FIXED NAVBAR CHANGES --- */
 
 
@@ -224,12 +233,6 @@ a {
   box-shadow: 0 0 20px #00000066;
 }
 
-:root {
-  --ink: #0e0e0e;
-  --card: #141414;
-  --muted: #cfcfcf;
-  --gold: #d4af37;
-}
 
 .products {
   padding: 70px 0 90px;
@@ -590,13 +593,6 @@ a {
   opacity: 0.9;
 }
 
-
-:root {
-  --gold: #d4af37;
-  --ink: #0e0e0e;
-  --card-bg: #141414;
-  --muted: #bcbcbc;
-}
 
 .blog-wrap {
   padding: 70px 0 90px;
@@ -1113,29 +1109,6 @@ a {
   }
 }
 
-
-:root {
-  --bg: #0e0e0e;
-  --text: #e9e9e9;
-  --muted: #d1d1d1;
-  --line: #1a1a1a;
-  --box: #121212;
-  --boxBorder: #262626;
-  --gold: #f2c15b; 
-}
-
-
-:root {
-  --bg: #0e0e0e;
-  --text: #ffffff;
-  --muted: #d7d7d7;
-  --line: #1a1a1a;
-  --box: #121212;
-  --boxBorder: #262626;
-  --gold: #f2c15b;
-  --font: "Raleway", system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
-    Arial, sans-serif;
-}
 
 .cs-footer {
   background: var(--bg);
