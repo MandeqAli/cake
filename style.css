@@ -4,14 +4,16 @@
   padding: 0;
 }
 
+/* FIX: Added html, body overflow fix to prevent horizontal scrollbar on mobile devices or due to wide elements like the footer rule. */
 html, body { 
   overflow-x: hidden;
   width: 100%;
 }
 
+/* --- NEW: FIXED NAVBAR & JUMP-FIX CORRECTION --- */
 :root {
-  
-  --header-height: 180px; 
+  /* 1. Define the approximate height of the fixed header */
+  --header-height: 100px; 
   --ink: #0e0e0e;
   --card: #141414;
   --muted: #cfcfcf;
@@ -24,14 +26,14 @@ html, body {
     Arial, sans-serif;
 }
 
-
+/* 2. Apply padding-top to the body to reserve space for the fixed header */
 body {
   font-family: Poppins, system-ui, Arial;
   color: #fff;
   background: #0e0e0e;
   padding-top: var(--header-height); 
 }
-
+/* --- END FIXED NAVBAR CORRECTION --- */
 
 
 a {
@@ -43,28 +45,39 @@ a {
   padding: 0 18px;
 }
 
-
+/* 3. Make the entire header fixed and set the dark background */
 .site-header.dark {
-  background: #0e0e0e;
+  background: var(--ink); /* Ensures black/dark background */
   color: #fff;
   position: fixed; 
   top: 0;
   width: 100%;
   z-index: 100; 
-  height: var(--header-height); 
-  display: block; 
+  display: flex; 
+  flex-direction: column;
 }
 
-
-.header-top {
+/* --- UPDATED: Main Header Row (Desktop Layout) --- */
+.main-header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 0;
+  padding: 10px 0; /* Reduced vertical padding */
+  border-bottom: 1px solid #ffffff14; /* Separator for top/bottom */
+  height: 60px; /* NEW: Fixed height for the logo/social row */
 }
+
+/* Ensure the logo stays centered */
+.logo-script-container {
+  flex-grow: 1; /* Allows it to take up available space */
+  text-align: center; /* Center the logo element */
+}
+
 .social {
   display: flex;
   gap: 18px;
+  /* Make social links not grow */
+  flex-shrink: 0; 
 }
 .icon img {
   width: 28px;
@@ -76,22 +89,22 @@ a {
 .callus {
   color: #f2c15b;
   border: 1px solid #f2c15b;
-  padding: 12px 18px;
+  padding: 8px 14px; /* Slightly smaller call button */
   border-radius: 4px;
   font-weight: 600;
+  white-space: nowrap; /* Prevent phone number from wrapping */
+  /* Make callus not grow */
+  flex-shrink: 0;
 }
-.logo-row {
-  display: flex;
-  justify-content: center;
-  padding: 12px 0 6px;
-}
+/* Removed old .header-top and .logo-row styles */
+
 .logo-script {
   font-family: "Brush Script MT", "Lucida Handwriting", cursive;
   font-size: 56px;
   color: #e5c063;
 }
 .main-nav {
-  border-top: 1px solid #ffffff14;
+  /* Removed top border here, as it's now on .main-header-row */
   border-bottom: 1px solid #ffffff14;
 }
 .main-menu {
@@ -99,9 +112,10 @@ a {
   gap: 46px;
   justify-content: center;
   list-style: none;
-  padding: 16px 0;
+  padding: 8px 0; /* Reduced padding for a tighter menu */
 }
 .main-menu li {
+    /* Added relative positioning to list items to contain the absolute position of :after */
     position: relative; 
 }
 .main-menu a {
@@ -109,13 +123,16 @@ a {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.06em;
+  /* Added position relative for the pseudo-element underline to work correctly */
   position: relative;
+  /* Added padding-bottom to prevent the underline from overlapping text */
   padding-bottom: 5px; 
   display: block;
+  /* NEW: Add transition for smooth color change on click/focus */
   transition: color 0.1s ease-in-out; 
 }
 
-
+/* UPDATED: Add style for hover, keyboard focus, and mouse click (active) state */
 .main-menu a:hover,
 .main-menu a:focus, 
 .main-menu a:active { 
@@ -135,7 +152,7 @@ a {
 }
 
 .main-nav a:hover::after,
-.main-nav a:focus::after {
+.main-nav a:focus::after { /* Also apply underline on keyboard focus */
   width: 100%;
 }
 .title-divider {
@@ -281,7 +298,6 @@ a {
   .prod-grid {
     grid-template-columns: 1fr;
   }
-
   .p-media .add {
     opacity: 1;
     transform: translate(-50%, 0);
@@ -347,7 +363,7 @@ a {
   line-height: 1.1;
   font-weight: 300;
   margin-bottom: 30px;
-
+  /* margin-left: 100px; */
 }
 
 
@@ -502,6 +518,8 @@ a {
 }
 
 .play-overlay a:hover {
+  background: #f2c15b;
+  /* FIX: Combined transforms to prevent override */
   transform: translate(-50%, -50%) scale(1.08); 
 }
 
@@ -1100,6 +1118,7 @@ a {
   height: 1px;
   background: var(--line);
   width: 100vw;
+  /* FIX: Adjusted for overflow */
   max-width: 100%; 
   position: relative;
   left: 0; 
@@ -1206,7 +1225,7 @@ a {
 
 
 /* --- NEW: Hamburger Icon Styles --- */
-/* .menu-toggle {
+.menu-toggle {
   display: none; 
   background: none;
   border: none;
@@ -1235,14 +1254,14 @@ a {
 
 .hamburger-icon::after {
   transform: translateY(5px);
-} */
-
-
-
-.blog-page {
-  opacity: 0.9; 
 }
+/* --- END Hamburger Icon Styles --- */
 
+/* --- NEW: Blog Page Opacity --- */
+.blog-page {
+  opacity: 0.7; 
+}
+/* --- END Blog Page Opacity --- */
 
 
 @media (max-width: 1024px) {
@@ -1254,71 +1273,71 @@ a {
     grid-column: 1/-1;
   }
 }
-
+/* --- UPDATED: MOBILE RESPONSIVENESS (Max-width: 768px) --- */
 @media (max-width: 768px) {
-  
-  .menu-toggle {
-    display: block; 
-    position: static;
-    margin-right: 10px;
-  }
-
- 
-  .header-top {
-    display: none; 
-  }
-  
-
-  .site-header.dark {
- 
-    display: flex;
-    flex-wrap: wrap; 
-    align-items: center;
-    justify-content: space-between;
-    height: 100px; 
-  }
-
-
+  /* Set overall header to mobile height */
   :root {
     --header-height: 100px; 
   }
 
-
+  /* Adjust padding based on new header height */
   body {
     padding-top: var(--header-height);
   }
 
-  .logo-row {
-    padding-left: 18px; 
-    padding-bottom: 0;
+  /* Use flexbox on the header to align logo and button on one line */
+  .site-header.dark {
+    flex-direction: row; /* Main header should be a row on mobile */
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
   }
-  .logo-script {
-      font-size: 42px; 
+  
+  /* Reset logo row to function as a flex item */
+  .main-header-row {
+      display: flex;
+      flex-basis: 100%; /* Make it take the full width */
+      height: auto;
+      border-bottom: none;
+      padding: 15px 18px;
+      order: 1; /* Keep it on top */
   }
-
+  .social,
+  .callus {
+      display: none; /* Hide social icons and "Call Us" on small screens */
+  }
+  
+  /* Logo is centered on desktop, but should be left-aligned on mobile */
+  .logo-script-container {
+      flex-grow: 0;
+      text-align: left;
+  }
+  
+  /* HIDE NAVIGATION MENU BY DEFAULT */
   .main-nav {
     width: 100%; 
-    max-height: 0;
+    max-height: 0; /* Initially hide the menu content (CSS transition hook) */
     overflow: hidden; 
     transition: max-height 0.4s ease-in-out, border-color 0.4s ease-in-out; 
     border-top: none; 
     border-bottom: none;
-    order: 3; 
+    order: 3; /* Force the navigation to appear below the logo/button */
   }
 
- 
+  /* STYLES WHEN MENU IS OPEN (Toggled by JS) */
   .main-nav.open {
     max-height: 300px; 
     border-top: 1px solid #ffffff14;
     border-bottom: 1px solid #ffffff14;
   }
 
- 
+  /* MAKE MENU ITEMS VERTICAL */
   .main-menu {
     flex-direction: column; 
-    align-items: center;
+    align-items: center; 
     padding: 10px 0; 
-    gap: 0;
+    gap: 0; 
   }
 
   .main-menu li {
@@ -1329,7 +1348,7 @@ a {
     padding: 10px 0; 
   }
   
- 
+  /* Reset previous media query styles */
   .blog-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1381,7 +1400,7 @@ a {
     font-size: 48px;
   }
 }
-
+/* --- END UPDATED: MOBILE RESPONSIVENESS (Max-width: 768px) --- */
 
 @media (max-width: 720px) {
   .cs-toprow {
