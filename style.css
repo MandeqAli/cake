@@ -10,6 +10,11 @@ body {
   background: #0e0e0e;
 
   overflow-x: hidden;
+  
+  /*      *** CHANGE 1: Added padding to prevent content from hiding under the fixed header. 
+     *** Adjust '172px' if your header height is different. 
+  */
+  padding-top: 172px; 
 }
 
 a {
@@ -26,6 +31,13 @@ a {
 .site-header.dark {
   background: #0e0e0e;
   color: #fff;
+  
+  /* *** CHANGE 2: Added styles to make the header fixed *** */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays above other content */
 }
 
 .header-top {
@@ -1273,6 +1285,13 @@ a {
 }
 
 @media (max-width: 768px) {
+  
+  /*      *** CHANGE 3: Update padding-top for smaller screens 
+     *** This value will likely need to be reduced for the mobile header height
+  */
+  body {
+    padding-top: 150px; /* Reduced estimate for mobile view */
+  }
 
   .hero-text h1,
   .btn-hero {
@@ -1358,13 +1377,16 @@ a {
   .prod-grid {
     grid-template-columns: 1fr;
   }
- 
+  
   .p-media .add {
     opacity: 1;
     transform: translate(-50%, 0);
   }
   
   .main-nav {
+    /*       *** CHANGE 4: Remove fixed position override for main-nav 
+       *** The main header is now fixed, so main-nav should follow its parent
+    */
     position: static; 
     margin-top: 0; 
   }
