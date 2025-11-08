@@ -11,10 +11,9 @@ body {
 
   overflow-x: hidden;
   
-  /*      *** CHANGE 1: Added padding to prevent content from hiding under the fixed header. 
-     *** Adjust '172px' if your header height is different. 
-  */
   padding-top: 172px; 
+  /* *** NEW CHANGE: Enable smooth scrolling for anchor links *** */
+  scroll-behavior: smooth; 
 }
 
 a {
@@ -657,16 +656,32 @@ a {
   padding: 18px 18px 20px;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.78) 0%, 
     rgba(0, 0, 0, 0) 60%
   );
   color: #fff;
-  transform: translateY(22%);
+  /* Pushes content down and out of view by default */
+  transform: translateY(22%); 
   transition: transform 0.45s ease;
 }
 
+/* *** NEW: Hide text by default *** */
+.blog-overlay h3,
+.blog-overlay p {
+    opacity: 0.1; /* Start nearly invisible */
+    transition: opacity 0.45s ease;
+}
+
+
 .blog-card:hover .blog-overlay {
-  transform: translateY(0);
+  /* Brings the overlay up */
+  transform: translateY(0); 
+}
+
+/* *** NEW: Show text on hover *** */
+.blog-card:hover .blog-overlay h3,
+.blog-card:hover .blog-overlay p {
+    opacity: 1; /* Fully visible */
 }
 
 .blog-card:hover .blog-media img {
@@ -1286,9 +1301,9 @@ a {
 
 @media (max-width: 768px) {
   
-  /*      *** CHANGE 3: Update padding-top for smaller screens 
-     *** This value will likely need to be reduced for the mobile header height
-  */
+  /*      *** CHANGE 3: Update padding-top for smaller screens 
+     *** This value will likely need to be reduced for the mobile header height
+  */
   body {
     padding-top: 150px; /* Reduced estimate for mobile view */
   }
@@ -1385,8 +1400,8 @@ a {
   
   .main-nav {
     /*       *** CHANGE 4: Remove fixed position override for main-nav 
-       *** The main header is now fixed, so main-nav should follow its parent
-    */
+       *** The main header is now fixed, so main-nav should follow its parent
+    */
     position: static; 
     margin-top: 0; 
   }
@@ -1396,6 +1411,7 @@ a {
   }
 
   .blog-overlay {
+    /* Retained for mobile/small screen focus */
     transform: translateY(0);
   }
 }
