@@ -8,11 +8,8 @@ body {
   font-family: Poppins, system-ui, Arial, sans-serif;
   color: #fff;
   background: #0e0e0e;
-
   overflow-x: hidden;
-  
   padding-top: 172px; 
-  /* *** NEW CHANGE: Enable smooth scrolling for anchor links *** */
   scroll-behavior: smooth; 
 }
 
@@ -30,13 +27,11 @@ a {
 .site-header.dark {
   background: #0e0e0e;
   color: #fff;
-  
-  /* *** CHANGE 2: Added styles to make the header fixed *** */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* Ensure it stays above other content */
+  z-index: 1000; 
 }
 
 .header-top {
@@ -660,30 +655,26 @@ a {
     rgba(0, 0, 0, 0) 60%
   );
   color: #fff;
-  /* Pushes content down and out of view by default */
   transform: translateY(22%); 
   transition: transform 0.45s ease;
 }
 
-/* *** UPDATED FOR IMMEDIATE VISIBILITY ON HOVER *** */
+
 .blog-overlay h3,
 .blog-overlay p {
-    /* Completely hidden until hover */
     opacity: 0; 
 }
 
 
 .blog-card:hover .blog-overlay {
-  /* Brings the overlay up */
   transform: translateY(0); 
 }
 
-/* *** UPDATED FOR IMMEDIATE VISIBILITY ON HOVER *** */
+
 .blog-card:hover .blog-overlay h3,
 .blog-card:hover .blog-overlay p {
-    /* Fully visible instantly on hover */
     opacity: 1; 
-    transition: opacity 0s; /* Instant snap to clear */
+    transition: opacity 0s;
 }
 
 .blog-card:hover .blog-media img {
@@ -1302,12 +1293,8 @@ a {
 }
 
 @media (max-width: 768px) {
-  
-  /*      *** CHANGE 3: Update padding-top for smaller screens 
-     *** This value will likely need to be reduced for the mobile header height
-  */
   body {
-    padding-top: 150px; /* Reduced estimate for mobile view */
+    padding-top: 150px; 
   }
 
   .hero-text h1,
@@ -1401,9 +1388,6 @@ a {
   }
   
   .main-nav {
-    /*       *** CHANGE 4: Remove fixed position override for main-nav 
-       *** The main header is now fixed, so main-nav should follow its parent
-    */
     position: static; 
     margin-top: 0; 
   }
@@ -1413,7 +1397,6 @@ a {
   }
 
   .blog-overlay {
-    /* Retained for mobile/small screen focus */
     transform: translateY(0);
   }
 }
