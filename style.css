@@ -290,11 +290,11 @@ a {
   .prod-grid {
     grid-template-columns: 1fr;
   }
-  /* .main-nav{
+  .main-nav{
     position: fixed;
     margin-top: -10px;
 
-  } */
+  }
   .p-media .add {
     opacity: 1;
     transform: translate(-50%, 0);
