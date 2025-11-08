@@ -665,11 +665,11 @@ a {
   transition: transform 0.45s ease;
 }
 
-/* *** NEW: Hide text by default *** */
+/* *** UPDATED FOR IMMEDIATE VISIBILITY ON HOVER *** */
 .blog-overlay h3,
 .blog-overlay p {
-    opacity: 0.1; /* Start nearly invisible */
-    transition: opacity 0.45s ease;
+    /* Completely hidden until hover */
+    opacity: 0; 
 }
 
 
@@ -678,10 +678,12 @@ a {
   transform: translateY(0); 
 }
 
-/* *** NEW: Show text on hover *** */
+/* *** UPDATED FOR IMMEDIATE VISIBILITY ON HOVER *** */
 .blog-card:hover .blog-overlay h3,
 .blog-card:hover .blog-overlay p {
-    opacity: 1; /* Fully visible */
+    /* Fully visible instantly on hover */
+    opacity: 1; 
+    transition: opacity 0s; /* Instant snap to clear */
 }
 
 .blog-card:hover .blog-media img {
